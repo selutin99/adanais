@@ -4,7 +4,7 @@ Web application for econometric modeling via Flask
 ## Initializing the Database
 
     python manage.py reset_db
-    # Create DB tables and populate the roles and users tables
+    # Create DB tables and populate the entity tables
     python manage.py init_db
 
 
