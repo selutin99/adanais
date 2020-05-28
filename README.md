@@ -1,6 +1,6 @@
 # adanais
 Web application for econometric modeling via Flask
-Trello board: <a href="https://trello.com/b/4Isv7syu/adanais">board</a>
+[Trello board](https://trello.com/b/4Isv7syu/adanais)
 
 ## Initializing the Database
 
