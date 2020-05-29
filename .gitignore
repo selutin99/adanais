@@ -1,4 +1,5 @@
 # Custom ignore
+.idea
 logs/
 
 # Byte-compiled / optimized / DLL files
