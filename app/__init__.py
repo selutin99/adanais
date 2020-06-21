@@ -5,11 +5,18 @@ from os import listdir
 from os.path import isfile, join
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 from config.constants import CONFIGURATION_DIRECTORY
 from config.settings import LOGGING_FORMAT, LOGGING_DATE_FORMAT, LOGGING_PATH
+from utils.db_utils.pymysql_db_provider import PyMySQLProvider
+
 
 app = Flask(__name__, instance_relative_config=True)
+# Database connect providers
+db = SQLAlchemy()
+pymysql_db = PyMySQLProvider()
+# End database connect providers
 
 
 def create_app():

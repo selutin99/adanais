@@ -1,5 +1,7 @@
 from flask_script import Command
 
+from app import db
+
 
 class DatabaseInitCommand(Command):
     """ Initialize the database."""

@@ -1,6 +1,8 @@
 from flask_script import Command
 from sqlalchemy_utils import database_exists, drop_database, create_database
 
+from config.database import DB_URL
+
 
 class DatabaseCreateCommand(Command):
     """ Create the database."""
