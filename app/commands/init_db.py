@@ -1,6 +1,6 @@
 from flask_script import Command
 
-from app import db
+from app import alchemy_db
 
 
 class DatabaseInitCommand(Command):
@@ -11,5 +11,5 @@ class DatabaseInitCommand(Command):
 
     @staticmethod
     def init_db():
-        db.drop_all()
-        db.create_all()
+        alchemy_db.drop_all()
+        alchemy_db.create_all()

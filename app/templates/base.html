@@ -1,0 +1,31 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}
+        {{ title }} | Adanais
+    {% else %}
+        Adanais main page
+    {% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        ... здесь должна быть навигационная панель  (см. полный код на GitHub) ...
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# содержимое приложения которое должно быть предоставлено в блоке app_content #}
+        {% block app_content %}
+        {% endblock %}
+    </div>
+{% endblock %}

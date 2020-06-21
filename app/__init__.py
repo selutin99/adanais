@@ -5,22 +5,31 @@ from os import listdir
 from os.path import isfile, join
 
 from flask import Flask
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import Session
 
 from config.constants import CONFIGURATION_DIRECTORY
 from config.settings import LOGGING_FORMAT, LOGGING_DATE_FORMAT, LOGGING_PATH
 from utils.db_utils.pymysql_db_provider import PyMySQLProvider
 
-
 app = Flask(__name__, instance_relative_config=True)
 # Database connect providers
-db = SQLAlchemy()
+alchemy_db = SQLAlchemy()
 pymysql_db = PyMySQLProvider()
 # End database connect providers
+bootstrap = Bootstrap(app)
 
 
 def create_app():
     init_config()
+
+    Session(app)
+    alchemy_db.init_app(app)
+
+    # Function for registration all blueprints of routes in app
+    blueprint_registration()
+
     logging_initialize()
     return app
 
@@ -40,3 +49,9 @@ def logging_initialize():
     handler.setFormatter(formatter)
 
     log.addHandler(handler)
+
+
+def blueprint_registration():
+    # blueprint for auth routes
+    from app.routes.main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
