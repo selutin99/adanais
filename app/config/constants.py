@@ -1,1 +1,0 @@
-CONFIGURATION_DIRECTORY = 'app/config/'

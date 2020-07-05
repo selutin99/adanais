@@ -1,26 +1,21 @@
-from flask_migrate import MigrateCommand
-from flask_script import Manager
+#!/usr/bin/env python
+"""Django's command-line utility for administrative tasks."""
+import os
+import sys
 
-from app.commands import DatabaseInitCommand, DatabaseCreateCommand
 
-# Setup Flask-Script with command line commands
-from app import create_app
+def main():
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'adanais.settings')
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
+    execute_from_command_line(sys.argv)
 
-manager = Manager(create_app())
 
-# For automatic database migration
-# python manage.py db init
-# python manage.py db migrate
-# python manage.py db upgrade
-# python manage.py db --help
-manager.add_command('db', MigrateCommand)
-# For manual database migration
-# python manage.py create_db
-# python manage.py init_db
-manager.add_command('create_db', DatabaseCreateCommand)
-manager.add_command('init_db', DatabaseInitCommand)
-
-if __name__ == "__main__":
-    # python manage.py                      # shows available commands
-    # python manage.py runserver --help     # shows available runserver options
-    manager.run()
+if __name__ == '__main__':
+    main()

@@ -1,19 +1,17 @@
 # adanais
-Web application for econometric modeling via Flask
+Web application for econometric modeling via Django
 
 [Trello board](https://trello.com/b/4Isv7syu/adanais)
 
 ## Initializing the Database
 
-    python manage.py reset_db
-    # Create DB tables and populate the entity tables
-    python manage.py init_db
+    python manage.py migrate
 
 
 ## Running the app
 
-    # Start the Flask development web server
+    # Start the Django development web server
     python manage.py runserver
 
 
-Point your web browser to http://localhost:5000/
+Point your web browser to http://localhost:8000/
